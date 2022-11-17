@@ -3,7 +3,7 @@ namespace gulgenclik.Models
 {
 	public class Table : BaseEntity
 	{
-		public string Name { get; set; }
+		public string? Name { get; set; }
 	}
 }
 
