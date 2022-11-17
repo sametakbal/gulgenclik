@@ -24,6 +24,11 @@ test-results/
 # Icon must end with two \r
 Icon
 
+# Database Files
+app.db
+app.db-shm
+app.db-wal
+
 
 # Thumbnails
 ._*
