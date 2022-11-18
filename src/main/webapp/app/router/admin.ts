@@ -8,6 +8,7 @@ const JhiConfigurationComponent = () => import('@/admin/configuration/configurat
 const JhiHealthComponent = () => import('@/admin/health/health.vue');
 const JhiLogsComponent = () => import('@/admin/logs/logs.vue');
 const JhiMetricsComponent = () => import('@/admin/metrics/metrics.vue');
+const BuffetContentsComponent = () => import('@/admin/buffet-contents/buffet-contents.vue');
 
 export default [
   {
@@ -62,6 +63,12 @@ export default [
     path: '/admin/configuration',
     name: 'JhiConfigurationComponent',
     component: JhiConfigurationComponent,
+    meta: { authorities: [Authority.ADMIN] },
+  },
+  {
+    path: '/admin/buffet-contents',
+    name: 'BuffetContentsComponent',
+    component: BuffetContentsComponent,
     meta: { authorities: [Authority.ADMIN] },
   },
 ];

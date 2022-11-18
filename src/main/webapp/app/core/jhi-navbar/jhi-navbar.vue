@@ -24,10 +24,10 @@
             <span v-text="$t('global.menu.home')">Home</span>
           </span>
         </b-nav-item>
-        <b-nav-item to="/" exact>
+        <b-nav-item to="/admin/buffet-contents" exact>
           <span>
             <font-awesome-icon icon="cogs" />
-            <span v-text="$t('global.menu.home')">Home</span>
+            <span v-text="$t('global.menu.buffet-contents')">Buffet Contents</span>
           </span>
         </b-nav-item>
         <b-nav-item-dropdown
