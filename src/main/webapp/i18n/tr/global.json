@@ -90,6 +90,7 @@
   },
   "entity": {
     "action": {
+      "clear": "Temizle",
       "addblob": "Add blob",
       "addimage": "Resim Ekle",
       "back": "Geri",

@@ -12,4 +12,9 @@ export default class BuffetContentsService {
     return axios.get(this.apiUrl);
   }
 
+  public delete(id: number):Promise<any> {
+    return axios.delete(`${this.apiUrl}/${id}`);
+  }
 }
+
+

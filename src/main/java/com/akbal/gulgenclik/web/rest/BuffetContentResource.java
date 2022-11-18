@@ -32,5 +32,14 @@ public class BuffetContentResource {
         return ResponseEntity.ok(service.getBuffetContents().getData());
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable Long id){
+        ServiceResult<Boolean> result = service.deleteBuffetContent(id);
+        if (result.isSuccess()) {
+            return ResponseEntity.ok(result.getData());
+        }
+        return ResponseEntity.badRequest().build();
+    }
+
 
 }

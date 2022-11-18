@@ -22,7 +22,7 @@ public class BuffetContentService {
         this.buffetContentMapper = buffetContentMapper;
     }
 
-    public ServiceResult<BuffetContentDTO> createBuffetContent(BuffetContentDTO dto){
+    public ServiceResult<BuffetContentDTO> createBuffetContent(BuffetContentDTO dto) {
         if (dto == null) {
             return new ServiceResult<>(null);
         }
@@ -31,9 +31,17 @@ public class BuffetContentService {
         return new ServiceResult<>(buffetContentMapper.toDto(saved));
     }
 
-    public ServiceResult<List<BuffetContentDTO>> getBuffetContents(){
+    public ServiceResult<List<BuffetContentDTO>> getBuffetContents() {
         List<BuffetContent> contents = buffetContentRepository.findAllByOrderById();
         return new ServiceResult<>(buffetContentMapper.toDtos(contents));
+    }
+
+    public ServiceResult<Boolean> deleteBuffetContent(Long id) {
+        if (id == null || !buffetContentRepository.existsById(id)) {
+            return new ServiceResult<>(null);
+        }
+        buffetContentRepository.deleteById(id);
+        return new ServiceResult<>(Boolean.TRUE);
     }
 
 }

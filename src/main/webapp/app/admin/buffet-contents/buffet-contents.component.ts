@@ -11,7 +11,7 @@ export default class BuffetContentsComponent extends Vue {
 
   public buffetContent : IBuffetContent;
   public contents: Array<IBuffetContent>;
-
+  public showDeletePartial = false;
 
   public constructor() {
     super();
@@ -24,7 +24,7 @@ export default class BuffetContentsComponent extends Vue {
   }
 
   createBuffetContent(){
-    if (this.buffetContent.name && this.buffetContent.price) {
+    if (this.contentIsValid()) {
       this.buffetContentsService().create(this.buffetContent).then(_res=>{
         this.getAll();
         this.clearForm();
@@ -32,12 +32,27 @@ export default class BuffetContentsComponent extends Vue {
     }
   }
 
+  contentIsValid():boolean{
+    return Boolean(this.buffetContent.name && this.buffetContent.price);
+  }
+
   selectContent(content : BuffetContent){
     this.buffetContent = content;
+    this.showDeletePartial = false;
+  }
+
+  deleteBuffetContent(){
+    if (this.buffetContent.id) {
+      this.buffetContentsService().delete(this.buffetContent.id).then(_res=>{
+        this.getAll();
+        this.clearForm();
+      });
+    }
   }
 
   clearForm(){
     this.buffetContent = new BuffetContent();
+    this.showDeletePartial = false;
   }
 
   getAll(){
