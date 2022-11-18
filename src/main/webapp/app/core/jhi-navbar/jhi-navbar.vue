@@ -2,7 +2,7 @@
   <b-navbar data-cy="navbar" toggleable="md" type="dark" class="jh-navbar">
     <b-navbar-brand class="logo" b-link to="/">
       <span class="logo-img"></span>
-      <span v-text="$t('global.title')" class="navbar-title">gulgenclik</span> <span class="navbar-version">{{ version }}</span>
+      <span v-text="$t('global.title')" class="navbar-title">Gülgençlik</span> <span class="navbar-version"></span>
     </b-navbar-brand>
     <b-navbar-toggle
       right
@@ -24,14 +24,12 @@
             <span v-text="$t('global.menu.home')">Home</span>
           </span>
         </b-nav-item>
-        <b-nav-item-dropdown right id="entity-menu" v-if="authenticated" active-class="active" class="pointer" data-cy="entity">
-          <span slot="button-content" class="navbar-dropdown-menu">
-            <font-awesome-icon icon="th-list" />
-            <span class="no-bold" v-text="$t('global.menu.entities.main')">Entities</span>
+        <b-nav-item to="/" exact>
+          <span>
+            <font-awesome-icon icon="cogs" />
+            <span v-text="$t('global.menu.home')">Home</span>
           </span>
-          <entities-menu></entities-menu>
-          <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
-        </b-nav-item-dropdown>
+        </b-nav-item>
         <b-nav-item-dropdown
           right
           id="admin-menu"
@@ -221,7 +219,7 @@
 
 .logo-img {
   height: 100%;
-  background: url('../../../content/images/logo-jhipster.png') no-repeat center center;
+  background: url('../../../content/images/logo.jpeg') no-repeat center center;
   background-size: contain;
   width: 100%;
   filter: drop-shadow(0 0 0.05rem white);
