@@ -7,8 +7,15 @@ export default class Home extends Vue {
   @Inject('loginService')
   private loginService: () => LoginService;
 
+  public isOpen = false;
+  public height = window.innerHeight * 0.75;
+
   public openLogin(): void {
     this.loginService().openLogin((<any>this).$root);
+  }
+
+  public openSession(){
+    this.isOpen = !this.isOpen;
   }
 
   public get authenticated(): boolean {
