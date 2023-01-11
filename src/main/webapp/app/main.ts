@@ -28,6 +28,7 @@ import '../content/scss/global.scss';
 import '../content/scss/vendor.scss';
 import TranslationService from '@/locale/translation.service';
 import BuffetContentsService from "@/admin/buffet-contents/buffet-contents.service";
+import BilliardTableService from "@/core/home/billiard-table.service";
 /* tslint:disable */
 
 // jhipster-needle-add-entity-service-to-main-import - JHipster will import entities services here
@@ -80,6 +81,7 @@ const vue = new Vue({
     registerService: () => new RegisterService(),
     userManagementService: () => new UserManagementService(),
     buffetContentsService: () => new BuffetContentsService(),
+    billiardTableService: () => new BilliardTableService(),
     healthService: () => new HealthService(),
     configurationService: () => new ConfigurationService(),
     logsService: () => new LogsService(),
