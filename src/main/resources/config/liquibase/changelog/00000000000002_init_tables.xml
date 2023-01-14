@@ -51,9 +51,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="price" type="float" />
-            <column name="is_using" type="boolean" valueBoolean="false">
-                <constraints nullable="false" />
-            </column>
+            <column name="end_date" type="timestamp" />
             <column name="created_by" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>

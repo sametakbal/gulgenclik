@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import java.time.ZonedDateTime;
 import java.util.List;
 import org.hibernate.annotations.Cache;
 
@@ -25,6 +26,11 @@ public class Session  extends AbstractAuditingEntity<Long>{
     @JoinColumn(name="table_id", nullable=false)
     private BilliardTable billiardTable;
 
+    @Column
+    private Float price;
+
+    @Column(name = "end_date")
+    private ZonedDateTime endDate;
 
     @JsonIgnore
     @ManyToMany
@@ -34,6 +40,22 @@ public class Session  extends AbstractAuditingEntity<Long>{
         inverseJoinColumns = { @JoinColumn(name = "buffet_content_id", referencedColumnName = "id") }
     )
     private List<BuffetContent> buffetContents;
+
+    public Session() {
+    }
+
+    public Session(Long id, User user,
+                   BilliardTable billiardTable,
+                   Float price,
+                   ZonedDateTime endDate,
+                   List<BuffetContent> buffetContents) {
+        this.id = id;
+        this.user = user;
+        this.billiardTable = billiardTable;
+        this.price = price;
+        this.endDate = endDate;
+        this.buffetContents = buffetContents;
+    }
 
     @Override
     public Long getId() {
@@ -66,5 +88,21 @@ public class Session  extends AbstractAuditingEntity<Long>{
 
     public void setBuffetContents(List<BuffetContent> buffetContents) {
         this.buffetContents = buffetContents;
+    }
+
+    public ZonedDateTime getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(ZonedDateTime endDate) {
+        this.endDate = endDate;
+    }
+
+    public Float getPrice() {
+        return price;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
     }
 }

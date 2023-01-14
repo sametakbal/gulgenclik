@@ -1,6 +1,6 @@
 <template>
   <div id="footer" class="footer">
-    <p v-text="$t('footer')">This is your footer</p>
+    <p>	2022 &copy; Akbal Yazılım</p>
   </div>
 </template>
 

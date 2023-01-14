@@ -20,8 +20,6 @@ body {
   line-height: 1.5;
   text-align: left;
   color: #212529;
-  background: #e4e5e6;
-  background-color: #fff;
 }
 
 a {
@@ -55,11 +53,16 @@ Browser Upgrade Prompt
 Main page styles
 ========================================================================== */
 
-.hipster.img-fluid {
+//.hipster.img-fluid {
+//  display: inline-block;
+//  width: 347px;
+//  height: 497px;
+//  background: url('../images/jhipster_family_member_3.svg') no-repeat center top;
+//  background-size: contain;
+//}
+.american.img-fluid{
   display: inline-block;
-  width: 347px;
-  height: 497px;
-  background: url('../images/jhipster_family_member_3.svg') no-repeat center top;
+  background: url('../images/american.png') no-repeat center top;
   background-size: contain;
 }
 

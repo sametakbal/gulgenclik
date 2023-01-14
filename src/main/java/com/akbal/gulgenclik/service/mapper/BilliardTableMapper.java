@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 @Service
 public class BilliardTableMapper {
 
-    private List<BilliardTableDTO> toBilliardTableDTOs(List<BilliardTable> tables){
+    public List<BilliardTableDTO> toBilliardTableDTOs(List<BilliardTable> tables){
         return tables.stream().filter(Objects::nonNull).map(this::toDto).collect(Collectors.toList());
     }
     public BilliardTableDTO toDto(BilliardTable entity){
@@ -24,4 +24,5 @@ public class BilliardTableMapper {
     public BilliardTable toEntity(BilliardTableDTO dto){
         return new BilliardTable(dto.getId(),dto.getName(),dto.getPrice(),dto.getUsing());
     }
+
 }
