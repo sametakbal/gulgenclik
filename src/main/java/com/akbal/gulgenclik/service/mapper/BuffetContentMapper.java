@@ -21,4 +21,8 @@ public class BuffetContentMapper {
     public BuffetContent toEntity(BuffetContentDTO dto) {
         return dto == null ? null : new BuffetContent(dto.getId(), dto.getName(), dto.getPrice());
     }
+
+    public List<BuffetContent> toEntities(List<BuffetContentDTO> dtos){
+        return  dtos == null ? null : dtos.stream().map(this::toEntity).collect(Collectors.toList());
+    }
 }

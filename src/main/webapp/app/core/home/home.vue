@@ -65,6 +65,7 @@
                 class="list-group-item d-flex justify-content-between align-items-center">
               {{ index + 1 }}. {{ content.name }}
               <span class="badge bg-light">{{ content.price }} ₺</span>
+              <button @click="removeBuffetContent(index)" class="badge bg-secondary text-white"> Çıkar </button>
             </li>
           </ul>
         </div>

@@ -25,4 +25,8 @@ export default class BilliardTableService {
     return axios.post(`${this.sessionApiUrl}/buffetcontent/add/${sessionId}`, buffetContent);
   }
 
+  public removeBuffetContent(sessionId: number, buffetContents: IBuffetContent[]) {
+    return axios.post(`${this.sessionApiUrl}/buffetcontent/remove/${sessionId}`, buffetContents);
+  }
+
 }

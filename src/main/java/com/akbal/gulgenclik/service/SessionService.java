@@ -13,6 +13,7 @@ import com.akbal.gulgenclik.service.dto.SessionDTO;
 import com.akbal.gulgenclik.service.mapper.BuffetContentMapper;
 import com.akbal.gulgenclik.service.mapper.SessionMapper;
 import java.time.ZonedDateTime;
+import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
@@ -115,6 +116,17 @@ public class SessionService {
         }
         Session session = byId.get();
         session.getBuffetContents().add(buffetContentMapper.toEntity(contentDTO));
+        sessionRepository.save(session);
+        return new ServiceResult<>(sessionMapper.toDto(sessionRepository.save(session)));
+    }
+
+    public ServiceResult<SessionDTO> removeBuffetContent(Long sessionId, List<BuffetContentDTO> dtos) {
+        Optional<Session> byId = sessionRepository.findById(sessionId);
+        if (byId.isEmpty()) {
+            return new ServiceResult<>(null);
+        }
+        Session session = byId.get();
+        session.setBuffetContents(buffetContentMapper.toEntities(dtos));
         sessionRepository.save(session);
         return new ServiceResult<>(sessionMapper.toDto(sessionRepository.save(session)));
     }

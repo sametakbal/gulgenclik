@@ -47,40 +47,11 @@
             <font-awesome-icon icon="users"/>
             <span v-text="$t('global.menu.admin.userManagement')">User management</span>
           </b-dropdown-item>
-          <b-dropdown-item to="/admin/metrics" active-class="active">
-            <font-awesome-icon icon="tachometer-alt"/>
-            <span v-text="$t('global.menu.admin.metrics')">Metrics</span>
+          <b-dropdown-item to="/admin/reports" active-class="active">
+            <font-awesome-icon icon="users"/>
+            <span>Raporlar</span>
           </b-dropdown-item>
-          <b-dropdown-item to="/admin/health" active-class="active">
-            <font-awesome-icon icon="heart"/>
-            <span v-text="$t('global.menu.admin.health')">Health</span>
-          </b-dropdown-item>
-          <b-dropdown-item to="/admin/configuration" active-class="active">
-            <font-awesome-icon icon="cogs"/>
-            <span v-text="$t('global.menu.admin.configuration')">Configuration</span>
-          </b-dropdown-item>
-          <b-dropdown-item to="/admin/logs" active-class="active">
-            <font-awesome-icon icon="tasks"/>
-            <span v-text="$t('global.menu.admin.logs')">Logs</span>
-          </b-dropdown-item>
-          <b-dropdown-item v-if="openAPIEnabled" to="/admin/docs" active-class="active">
-            <font-awesome-icon icon="book"/>
-            <span v-text="$t('global.menu.admin.apidocs')">API</span>
-          </b-dropdown-item>
-        </b-nav-item-dropdown>
-        <b-nav-item-dropdown id="languagesnavBarDropdown" right v-if="languages && Object.keys(languages).length > 1">
-          <span slot="button-content">
-            <font-awesome-icon icon="flag"/>
-            <span class="no-bold" v-text="$t('global.menu.language')">Language</span>
-          </span>
-          <b-dropdown-item
-            v-for="(value, key) in languages"
-            :key="`lang-${key}`"
-            v-on:click="changeLanguage(key)"
-            :class="{ active: isActiveLanguage(key) }"
-          >
-            {{ value.name }}
-          </b-dropdown-item>
+       
         </b-nav-item-dropdown>
         <b-nav-item-dropdown
           right

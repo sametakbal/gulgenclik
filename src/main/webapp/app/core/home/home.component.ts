@@ -35,7 +35,7 @@ export default class Home extends Vue {
 
   public mounted(): void {
     this.loadTables();
-    setInterval(this.loadTables, 10000);
+    setInterval(this.loadTables, 50000);
     this.loadBuffetContents();
   }
 
@@ -60,7 +60,22 @@ export default class Home extends Vue {
   public addBuffetContent(buffetContent: IBuffetContent) {
     this.billiardTableService().addBuffetContent(this.selectedSession.id, buffetContent).then(_res => {
       this.selectedSession = _res.data;
+      this.loadTables();
     });
+  }
+
+  public removeBuffetContent(index: number) {
+    let tempArr = [];
+    for (let i = 0; i < this.selectedSession.buffetContents.length; i++) {
+      if (i !== index) {
+        tempArr.push(this.selectedSession.buffetContents.at(i));
+      }
+    }
+    this.billiardTableService().removeBuffetContent(this.selectedSession.id,
+      tempArr).then(_res => {
+        this.selectedSession = _res.data;
+        this.loadTables();
+      });
   }
 
   public getSessionByBilliard(billiardId: number) {

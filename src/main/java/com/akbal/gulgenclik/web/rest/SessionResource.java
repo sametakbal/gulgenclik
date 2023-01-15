@@ -7,6 +7,8 @@ import com.akbal.gulgenclik.service.dto.SessionDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/sessions")
 public class SessionResource {
@@ -47,6 +49,15 @@ public class SessionResource {
     @PostMapping("/buffetcontent/add/{sessionId}")
     public ResponseEntity<SessionDTO> addBuffetContent(@PathVariable Long sessionId, @RequestBody BuffetContentDTO buffetContentDTO) {
         ServiceResult<SessionDTO> result = service.addBuffetContent(sessionId, buffetContentDTO);
+        if (result.isSuccess()) {
+            return ResponseEntity.ok(result.getData());
+        }
+        return ResponseEntity.badRequest().build();
+    }
+
+    @PostMapping("/buffetcontent/remove/{sessionId}")
+    public ResponseEntity<SessionDTO> removeBuffetContent(@PathVariable Long sessionId, @RequestBody List<BuffetContentDTO> dtos) {
+        ServiceResult<SessionDTO> result = service.removeBuffetContent(sessionId, dtos);
         if (result.isSuccess()) {
             return ResponseEntity.ok(result.getData());
         }
