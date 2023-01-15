@@ -1,11 +1,11 @@
 import Component from 'vue-class-component';
-import {Inject, Vue} from 'vue-property-decorator';
+import { Inject, Vue } from 'vue-property-decorator';
 import LoginService from '@/account/login.service';
 import BilliardTableService from "@/core/home/billiard-table.service";
-import {IBilliardTable} from "@/shared/model/billard-table.model";
-import {ISessionModel, SessionModel} from "@/shared/model/session.model";
+import { IBilliardTable } from "@/shared/model/billard-table.model";
+import { ISessionModel, SessionModel } from "@/shared/model/session.model";
 import BuffetContentsService from "@/admin/buffet-contents/buffet-contents.service";
-import {IBuffetContent} from "@/shared/model/buffet-content.model";
+import { IBuffetContent } from "@/shared/model/buffet-content.model";
 
 @Component
 export default class Home extends Vue {
@@ -35,6 +35,7 @@ export default class Home extends Vue {
 
   public mounted(): void {
     this.loadTables();
+    setInterval(this.loadTables, 10000);
     this.loadBuffetContents();
   }
 
@@ -45,6 +46,19 @@ export default class Home extends Vue {
   public openSession(id: number) {
     this.billiardTableService().openSession(id).then(_res => {
       this.loadTables();
+      this.selectedSession = _res.data;
+    });
+  }
+
+  public closeSession(id: number) {
+    this.billiardTableService().closeSession(id).then(_res => {
+      this.loadTables();
+      this.selectedSession = _res.data;
+    });
+  }
+
+  public addBuffetContent(buffetContent: IBuffetContent) {
+    this.billiardTableService().addBuffetContent(this.selectedSession.id, buffetContent).then(_res => {
       this.selectedSession = _res.data;
     });
   }

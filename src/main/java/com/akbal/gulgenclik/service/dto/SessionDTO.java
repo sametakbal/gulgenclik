@@ -8,15 +8,18 @@ import java.util.List;
 public class SessionDTO implements Serializable {
     private Long id;
     private UserDTO user;
+
+    private Float price;
     private BilliardTableDTO billiardTable;
     private List<BuffetContentDTO> buffetContents;
 
     public SessionDTO() {
     }
 
-    public SessionDTO(Long id, UserDTO user, BilliardTableDTO billiardTable, List<BuffetContentDTO> buffetContents) {
+    public SessionDTO(Long id, UserDTO user, Float price, BilliardTableDTO billiardTable, List<BuffetContentDTO> buffetContents) {
         this.id = id;
         this.user = user;
+        this.price = price;
         this.billiardTable = billiardTable;
         this.buffetContents = buffetContents;
     }
@@ -31,6 +34,14 @@ public class SessionDTO implements Serializable {
 
     public UserDTO getUser() {
         return user;
+    }
+
+    public Float getPrice() {
+        return price;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
     }
 
     public void setUser(UserDTO user) {

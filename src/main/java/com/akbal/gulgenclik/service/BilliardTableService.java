@@ -19,10 +19,13 @@ public class BilliardTableService {
     private final BilliardTableRepository billiardTableRepository;
     private final BilliardTableMapper mapper;
 
+    private final SessionService sessionService;
+
     public BilliardTableService(BilliardTableRepository billiardTableRepository,
-                                BilliardTableMapper mapper) {
+                                BilliardTableMapper mapper, SessionService sessionService) {
         this.billiardTableRepository = billiardTableRepository;
         this.mapper = mapper;
+        this.sessionService = sessionService;
     }
 
     public ServiceResult<BilliardTableDTO> createBilliardTable(BilliardTableDTO dto) {
@@ -34,7 +37,16 @@ public class BilliardTableService {
 
     public ServiceResult<List<BilliardTableDTO>> getBilliardTables(String term){
         List<BilliardTable> allByNameContains = billiardTableRepository.findAllByNameContainsOrderById(term);
-        return new ServiceResult<>(mapper.toBilliardTableDTOs(allByNameContains));
+        List<BilliardTableDTO> billiardTableDTOS = mapper.toBilliardTableDTOs(allByNameContains);
+        for (BilliardTableDTO dto: billiardTableDTOS) {
+            dto.setTotalSessionCost(sessionService.getTotalCost(dto.getId()));
+            Integer spendMinutes = sessionService.getSpendMinutes(dto.getId());
+            if (spendMinutes != null) {
+                dto.setHour(spendMinutes/60);
+                dto.setMinute(spendMinutes%60);
+            }
+        }
+        return new ServiceResult<>(billiardTableDTOS);
     }
 
 

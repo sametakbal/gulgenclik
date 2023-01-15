@@ -8,7 +8,10 @@ public class BilliardTableDTO implements Serializable {
     private Long id;
     private String name;
     private Float price;
+    private Float totalSessionCost;
     private Boolean isUsing;
+    private Integer hour;
+    private Integer minute;
 
     public BilliardTableDTO(BilliardTable entity) {
         this.id = entity.getId();
@@ -47,5 +50,29 @@ public class BilliardTableDTO implements Serializable {
 
     public void setUsing(Boolean using) {
         isUsing = using;
+    }
+
+    public Float getTotalSessionCost() {
+        return totalSessionCost;
+    }
+
+    public void setTotalSessionCost(Float totalSessionCost) {
+        this.totalSessionCost = totalSessionCost;
+    }
+
+    public Integer getHour() {
+        return hour;
+    }
+
+    public void setHour(Integer hour) {
+        this.hour = hour;
+    }
+
+    public Integer getMinute() {
+        return minute;
+    }
+
+    public void setMinute(Integer minute) {
+        this.minute = minute;
     }
 }

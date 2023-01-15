@@ -1,3 +1,4 @@
+import { IBuffetContent } from '@/shared/model/buffet-content.model';
 import axios from 'axios';
 
 export default class BilliardTableService {
@@ -14,6 +15,14 @@ export default class BilliardTableService {
 
   public getSession(billiardId: number): Promise<any> {
     return axios.get(`${this.sessionApiUrl}/billiard/${billiardId}`);
+  }
+
+  public closeSession(billiardId: number) {
+    return axios.post(`${this.sessionApiUrl}/billiard/close/${billiardId}`);
+  }
+
+  public addBuffetContent(sessionId: number, buffetContent: IBuffetContent) {
+    return axios.post(`${this.sessionApiUrl}/buffetcontent/add/${sessionId}`, buffetContent);
   }
 
 }

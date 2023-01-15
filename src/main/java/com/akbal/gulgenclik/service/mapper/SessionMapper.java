@@ -28,5 +28,14 @@ public class SessionMapper {
         return dto;
     }
 
+    public  Session toEntity(SessionDTO dto){
+        Session session = new Session();
+        session.setId(dto.getId());
+        session.setUser(userMapper.justUserDTOToUser(dto.getUser()));
+        session.setPrice(dto.getPrice());
+
+        return session;
+    }
+
 
 }
