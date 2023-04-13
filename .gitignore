@@ -1,162 +1,35 @@
-######################
-# Project Specific
-######################
-/src/main/webapp/content/css/main.css
-/build/resources/main/static/**
-/src/test/javascript/coverage/
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-######################
-# Node
-######################
-/node/
-node_tmp/
-node_modules/
-npm-debug.log.*
-/.awcache/*
-/.cache-loader/*
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
 
-######################
-# SASS
-######################
-.sass-cache/
+# testing
+/coverage
 
-######################
-# Eclipse
-######################
-*.pydevproject
-.project
-.metadata
-tmp/
-tmp/**/*
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
-.classpath
-.settings/
-.loadpath
-.factorypath
-/src/main/resources/rebel.xml
+# next.js
+/.next/
+/out/
 
-# External tool builders
-.externalToolBuilders/**
+# production
+/build
 
-# Locally stored "Eclipse launch configurations"
-*.launch
-
-# CDT-specific
-.cproject
-
-# PDT-specific
-.buildpath
-
-# STS-specific
-/.sts4-cache/*
-
-######################
-# IntelliJ
-######################
-.idea/
-*.iml
-*.iws
-*.ipr
-*.ids
-*.orig
-classes/
-out/
-
-######################
-# Visual Studio Code
-######################
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-*.code-workspace
-
-######################
-# Maven
-######################
-/log/
-/target/
-
-######################
-# Gradle
-######################
-.gradle/
-/build/
-
-######################
-# Package Files
-######################
-*.jar
-*.war
-*.ear
-*.db
-
-######################
-# Windows
-######################
-# Windows image file caches
-Thumbs.db
-
-# Folder config file
-Desktop.ini
-
-######################
-# Mac OSX
-######################
+# misc
 .DS_Store
-.svn
+*.pem
 
-# Thumbnails
-._*
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
+# local env files
+.env*.local
 
-######################
-# Directories
-######################
-/bin/
-/deploy/
+# vercel
+.vercel
 
-######################
-# Logs
-######################
-*.log*
-
-######################
-# Others
-######################
-*.class
-*.*~
-*~
-.merge_file*
-
-######################
-# Gradle Wrapper
-######################
-!gradle/wrapper/gradle-wrapper.jar
-
-######################
-# Maven Wrapper
-######################
-!.mvn/wrapper/maven-wrapper.jar
-
-######################
-# ESLint
-######################
-.eslintcache
-
-######################
-# Code coverage
-######################
-/coverage/
-/.nyc_output/
-
-.husky/
-/.devcontainer/
+# typescript
+*.tsbuildinfo
+next-env.d.ts
